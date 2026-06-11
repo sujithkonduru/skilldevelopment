@@ -6,7 +6,10 @@ Fixed: Prevents infinite question generation and duplicate questions
 import streamlit as st
 import streamlit.components.v1 as components
 from groq import Groq
+from dotenv import load_dotenv
 import json, re, tempfile, os, time, random, base64
+
+load_dotenv()
 from io import BytesIO
 from typing import List, Dict, Any
 
@@ -35,7 +38,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-GROQ_API_KEY = "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"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=GROQ_API_KEY)
 
 # Behavioral question pool
