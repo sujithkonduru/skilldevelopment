@@ -1,7 +1,11 @@
-import json
+import json, os
 from groq import Groq
+from dotenv import load_dotenv
 
-client = Groq(api_key="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")
+load_dotenv()
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+client = Groq(api_key=GROQ_API_KEY)
 
 class AnswerEvaluatorAgent:
     def capture_voice_answer(self):

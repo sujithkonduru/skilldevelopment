@@ -17,10 +17,13 @@ Integrate:        import agent2_question_generator   (it sets st.session_state.q
 import streamlit as st
 import streamlit.components.v1 as components
 from groq import Groq
+from dotenv import load_dotenv
 import json, re, tempfile, os, time, random
 
+load_dotenv()
+
 # ─── Groq client ──────────────────────────────────────────────────────────────
-GROQ_API_KEY = "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"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=GROQ_API_KEY)
 
 # ─── Page config (safe to call multiple times; Streamlit ignores duplicates) ──

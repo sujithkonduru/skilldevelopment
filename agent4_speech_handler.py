@@ -2,6 +2,7 @@
 
 import streamlit as st
 from groq import Groq
+from dotenv import load_dotenv
 import tempfile
 import os
 import speech_recognition as sr
@@ -10,7 +11,9 @@ import threading
 from pathlib import Path
 
 # Initialize Groq client
-client = Groq(api_key="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")
+load_dotenv()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+client = Groq(api_key=GROQ_API_KEY)
 
 class SpeechHandlerAgent:
     """Agent 4: Handles text-to-speech and speech-to-text operations"""
